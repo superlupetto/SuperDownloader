@@ -60,4 +60,5 @@ Siti Supportati: Oltre a YouTube, puoi scaricare da Vimeo, Facebook, Instagram, 
 
 Creato per uso personale e didattico. Rispetta sempre i termini di servizio delle piattaforme e il copyright degli autori.
 
+Discord Ufficiale: Unisciti [qui](Discord.gg/vQACqKnysB)
 
