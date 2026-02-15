@@ -1,6 +1,6 @@
 # SuperDownloader
 
-🚀 Super Downloader Python V1.3
+🚀 Super Downloader Python V1.6
 
 Un potente strumento basato su Python e yt-dlp per scaricare video e musica da YouTube (e oltre 1000 altri siti) alla massima qualità possibile. Sostituisce la vecchia versione .bat con una logica più solida e un'installazione automatizzata.
 
@@ -35,13 +35,13 @@ yt-dlp: Installabile tramite lo script stesso o con:
 
 🚀 Installazione e Uso
 
-Copia il file yt.py nella tua cartella di lavoro.
+Copia il file SuperDownloader.py nella tua cartella di lavoro.
 
 Apri il terminale o il CMD.
 
 Avvia lo script:
 
-python yt.py
+python SuperDownloader.py
 
 Usa il codice con cautela.
 
