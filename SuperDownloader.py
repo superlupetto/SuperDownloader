@@ -14,7 +14,7 @@ FFMPEG_ROOT = r"C:\FFmpeg"
 FFMPEG_EXE = os.path.join(FFMPEG_ROOT, "bin", "ffmpeg.exe")
 # Inserisci i tuoi URL reali qui sotto
 UPDATE_URL = "https://raw.githubusercontent.com"
-FF_URL = "https://github.com"
+FF_URL = "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip"
 SCRIPT_PATH = os.path.abspath(__file__)
 
 LANGS = {
@@ -171,3 +171,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
