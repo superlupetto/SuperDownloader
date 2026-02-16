@@ -1,8 +1,7 @@
 
                                                                                  # SuperDownloader
 
-<img width="262" height="88" alt="Screenshot 2026-02-16 080717" src="https://github.com/user-attachments/assets/9bcb5e74-0282-4769-9b47-6c8adecd99b5" />
-
+<img width="269" height="180" alt="Screenshot 2026-02-16 080717" src="https://github.com/user-attachments/assets/9bcb5e74-0282-4769-9b47-6c8adecd99b5" />
 
 <img width="269" height="180" alt="Screenshot 2026-02-16 080705" src="https://github.com/user-attachments/assets/51252bb8-2c8e-4991-8c08-afad0e2feafa" />
 
