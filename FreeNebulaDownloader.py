@@ -61,7 +61,7 @@ def main():
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
         print("===========================================")
-        print(f"      Free SupeDownloader V2.2")
+        print(f"      Free NebulaDownloader V2.2")
         print("===========================================")
         print(f" Path: {BASE_DIR} | Lang: {L['title']}")
         print("-------------------------------------------")
@@ -110,6 +110,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
