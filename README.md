@@ -218,25 +218,14 @@ L’utente è responsabile dell’uso conforme alle leggi vigenti e ai termini d
 
 ⭐ Se ti piace il progetto
 
-Metti una ⭐ su GitHub
-
 Condividilo
 
 Contribuisci con idee o miglioramenti
 
 Se vuoi, posso anche prepararti:
 
-Versione README con badge GitHub
-
 Versione inglese internazionale
 
-Template per GitHub release
-
-Logo + banner in stile cyber/tech
-
-Licenza (MIT, GPL, ecc.)
-
-Dimmi dove vuoi portarlo 👀🚀
 ---
 
 
