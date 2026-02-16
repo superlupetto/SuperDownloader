@@ -1,4 +1,4 @@
-🚀 Free SupeDownloader V2.2
+🚀 FreeNebulaDownloader V2.2
 
 Uno strumento avanzato basato su Python che utilizza yt-dlp e FFmpeg per scaricare e convertire contenuti multimediali alla massima qualità disponibile.
 
