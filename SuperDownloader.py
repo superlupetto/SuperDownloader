@@ -13,7 +13,7 @@ VIDEO_DIR = os.path.join(BASE_DIR, "Video")
 FFMPEG_ROOT = r"C:\FFmpeg"
 FFMPEG_EXE = os.path.join(FFMPEG_ROOT, "bin", "ffmpeg.exe")
 # Inserisci i tuoi URL reali qui sotto
-UPDATE_URL = "https://raw.githubusercontent.com"
+UPDATE_URL = "http://lunaremagicafata.duckdns.org/downloads/SuperDownloader.py"
 FF_URL = "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip"
 SCRIPT_PATH = os.path.abspath(__file__)
 
@@ -171,4 +171,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
