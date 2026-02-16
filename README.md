@@ -79,11 +79,7 @@ Configurazione pronta all’uso
 
 📡 Sistema di Aggiornamento
 
-Controllo aggiornamenti remoto
-
 Download patch direttamente dal server
-
-Miglioramenti di sicurezza continui
 
 📂 Struttura delle Cartelle
 
@@ -128,9 +124,6 @@ yt-dlp
 
 FFmpeg (build BtbN)
 
-Installazione manuale opzionale:
-
-pip install yt-dlp
 🚀 Come Avviare
 
 Salvare il file come:
@@ -176,8 +169,6 @@ Auto-setup FFmpeg migliorato
 Ottimizzazione download MP4
 
 Miglior gestione errori
-
-🛠️ Roadmap Futuro (V3)
 
 Supporto playlist completo
 
