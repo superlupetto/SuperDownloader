@@ -212,6 +212,7 @@ Allegare screenshot se possibile
 
 ⚖️ Disclaimer
 
+📄 Licenza: 
 Questo software è fornito a scopo educativo e personale.
 L’utente è responsabile dell’uso conforme alle leggi vigenti e ai termini di servizio delle piattaforme da cui effettua il download.
 
@@ -237,10 +238,6 @@ Licenza (MIT, GPL, ecc.)
 
 Dimmi dove vuoi portarlo 👀🚀
 ---
-
-📄 Licenza
-
-Creato per uso personale e didattico. Rispetta sempre i termini di servizio delle piattaforme e il copyright degli autori.
 
 
 <img width="269" height="180" alt="Screenshot 2026-02-16 080717" src="https://github.com/user-attachments/assets/9bcb5e74-0282-4769-9b47-6c8adecd99b5" />
