@@ -12,44 +12,26 @@ MUSIC_DIR = os.path.join(BASE_DIR, "Musica")
 VIDEO_DIR = os.path.join(BASE_DIR, "Video")
 FFMPEG_ROOT = r"C:\FFmpeg"
 FFMPEG_EXE = os.path.join(FFMPEG_ROOT, "bin", "ffmpeg.exe")
-UPDATE_URL = "http://lunaremagicafata.duckdns.org/downloads/SuperDownloader.py"
-FF_URL = "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip"
+UPDATE_URL = "http://lunaremagicafata.duckdns.org"
+FF_URL = "https://github.com"
 SCRIPT_PATH = os.path.abspath(__file__)
 
-# --- DIZIONARIO LINGUE ESTESO ---
 LANGS = {
-    'it': {'title': "Italiano", 'menu': "SUPER DOWNLOADER PRO V1.9.2", 'opt1': "[1] -> Scarica MP3", 'opt2': "[2] -> Scarica MP4", 'opt3': "[3] -> Converti Locali", 'opt4': "[4] -> AGGIORNA SCRIPT", 'opt5': "[5] -> Aggiorna yt-dlp", 'opt6': "[6] -> LINGUA", 'opt7': "[7] -> Esci", 'ask': "Scegli: ", 'link': "Link (x torna): ", 'done': "✅ Completato!", 'ffmpeg': "FFMPEG MANCANTE - INSTALLAZIONE..."},
-    'en': {'title': "English", 'menu': "SUPER DOWNLOADER PRO V1.9.2", 'opt1': "[1] -> Download MP3", 'opt2': "[2] -> Download MP4", 'opt3': "[3] -> Local Convert", 'opt4': "[4] -> UPDATE SCRIPT", 'opt5': "[5] -> Update yt-dlp", 'opt6': "[6] -> LANGUAGE", 'opt7': "[7] -> Exit", 'ask': "Choose: ", 'link': "Link (x back): ", 'done': "✅ Done!", 'ffmpeg': "FFMPEG MISSING - INSTALLING..."},
-    'ja': {'title': "日本語", 'menu': "スーパーダウンローダー PRO V1.9.2", 'opt1': "[1] -> MP3ダウンロード", 'opt2': "[2] -> MP4ダウンロード", 'opt3': "[3] -> ローカル変換", 'opt4': "[4] -> スクリプト更新", 'opt5': "[5] -> yt-dlp更新", 'opt6': "[6] -> 言語設定", 'opt7': "[7] -> 終了", 'ask': "選択: ", 'link': "リンク (xで戻る): ", 'done': "✅ 完了！", 'ffmpeg': "FFMPEGが見つかりません - インストール中..."},
-    'da': {'title': "Dansk", 'menu': "SUPER DOWNLOADER PRO V1.9.2", 'opt1': "[1] -> Download MP3", 'opt2': "[2] -> Download MP4", 'opt3': "[3] -> Lokal Konvertering", 'opt4': "[4] -> OPDATER SCRIPT", 'opt5': "[5] -> Opdater yt-dlp", 'opt6': "[6] -> SPROG", 'opt7': "[7] -> Afslut", 'ask': "Vælg: ", 'link': "Link (x tilbage): ", 'done': "✅ Færdig!", 'ffmpeg': "FFMPEG MANGLER - INSTALLERER..."},
-    'fr': {'title': "Français", 'menu': "SUPER DOWNLOADER PRO V1.9.2", 'opt1': "[1] -> Télécharger MP3", 'opt2': "[2] -> Télécharger MP4", 'opt3': "[3] -> Conversion Locale", 'opt4': "[4] -> MAJ SCRIPT", 'opt5': "[5] -> MAJ yt-dlp", 'opt6': "[6] -> LANGUE", 'opt7': "[7] -> Quitter", 'ask': "Choisir: ", 'link': "Lien (x retour): ", 'done': "✅ Terminé!", 'ffmpeg': "FFMPEG MANQUANT - INSTALLATION..."},
-    'hr': {'title': "Hrvatski", 'menu': "SUPER DOWNLOADER PRO V1.9.2", 'opt1': "[1] -> Preuzmi MP3", 'opt2': "[2] -> Preuzmi MP4", 'opt3': "[3] -> Lokalna Konverzija", 'opt4': "[4] -> AŽURIRAJ SKRIPTU", 'opt5': "[5] -> Ažuriraj yt-dlp", 'opt6': "[6] -> JEZIK", 'opt7': "[7] -> Izlaz", 'ask': "Odaberi: ", 'link': "Link (x natrag): ", 'done': "✅ Gotovo!", 'ffmpeg': "FFMPEG NEDOSTAJE - INSTALACIJA..."},
-    'cs': {'title': "Čeština", 'menu': "SUPER DOWNLOADER PRO V1.9.2", 'opt1': "[1] -> Stáhnout MP3", 'opt2': "[2] -> Stáhnout MP4", 'opt3': "[3] -> Lokální Konverze", 'opt4': "[4] -> AKTUALIZOVAT SKRIPT", 'opt5': "[5] -> Aktualizovat yt-dlp", 'opt6': "[6] -> JAZYK", 'opt7': "[7] -> Ukončit", 'ask': "Vyberte: ", 'link': "Odkaz (x zpět): ", 'done': "✅ Hotovo!", 'ffmpeg': "FFMPEG CHYBÍ - INSTALACE..."},
-    'tr': {'title': "Türkçe", 'menu': "SUPER DOWNLOADER PRO V1.9.2", 'opt1': "[1] -> MP3 İndir", 'opt2': "[2] -> MP4 İndir", 'opt3': "[3] -> Yerel Dönüştürme", 'opt4': "[4] -> BETİĞİ GÜNCELLE", 'opt5': "[5] -> yt-dlp Güncelle", 'opt6': "[6] -> DİL", 'opt7': "[7] -> Çıkış", 'ask': "Seçiniz: ", 'link': "Link (x geri): ", 'done': "✅ Tamamlandı!", 'ffmpeg': "FFMPEG EKSİK - YÜKLENİYOR..."},
-    'hi': {'title': "हिन्दी", 'menu': "सुपर डाउनलोडर PRO V1.9.2", 'opt1': "[1] -> MP3 डाउनलोड", 'opt2': "[2] -> MP4 डाउनलोड", 'opt3': "[3] -> स्थानीय रूपांतरण", 'opt4': "[4] -> स्क्रिप्ट अपडेट", 'opt5': "[5] -> yt-dlp अपडेट", 'opt6': "[6] -> भाषा", 'opt7': "[7] -> बाहर निकलें", 'ask': "चुनें: ", 'link': "लिंक (x पीछे): ", 'done': "✅ संपन्न!", 'ffmpeg': "FFMPEG गायब है - इंस्टॉल हो रहा है..."}
+    'it': {'title': "Italiano", 'opt1': "Scarica MP3", 'opt2': "Scarica MP4", 'opt3': "Converti MKV in MP4", 'opt4': "Estrai MP3 da Video Locali", 'opt5': "AGGIORNA SCRIPT", 'opt6': "Aggiorna yt-dlp", 'opt7': "LINGUA", 'opt8': "Esci"},
+    'en': {'title': "English", 'opt1': "Download MP3", 'opt2': "Download MP4", 'opt3': "Convert MKV to MP4", 'opt4': "Extract MP3 from Local Video", 'opt5': "UPDATE SCRIPT", 'opt6': "Update yt-dlp", 'opt7': "LANGUAGE", 'opt8': "Exit"},
+    'ja': {'title': "日本語", 'opt1': "MP3ダウンロード", 'opt2': "MP4ダウンロード", 'opt3': "MKVをMP4に変換", 'opt4': "ローカルビデオからMP3を抽出", 'opt5': "スクリプト更新", 'opt6': "yt-dlp更新", 'opt7': "言語", 'opt8': "終了"},
+    'da': {'title': "Dansk", 'opt1': "Download MP3", 'opt2': "Download MP4", 'opt3': "Konverter MKV til MP4", 'opt4': "Ekstraher MP3 fra lokal video", 'opt5': "OPDATER SCRIPT", 'opt6': "Opdater yt-dlp", 'opt7': "SPROG", 'opt8': "Afslut"},
+    'fr': {'title': "Français", 'opt1': "Télécharger MP3", 'opt2': "Télécharger MP4", 'opt3': "Convertir MKV en MP4", 'opt4': "Extraire MP3 d'une vidéo locale", 'opt5': "MAJ SCRIPT", 'opt6': "MAJ yt-dlp", 'opt7': "LANGUE", 'opt8': "Quitter"},
+    'hr': {'title': "Hrvatski", 'opt1': "Preuzmi MP3", 'opt2': "Preuzmi MP4", 'opt3': "Pretvori MKV u MP4", 'opt4': "Ekstrahiraj MP3 iz lokalnog videa", 'opt5': "AŽURIRAJ SKRIPTU", 'opt6': "Ažuriraj yt-dlp", 'opt7': "JEZIK", 'opt8': "Izlaz"},
+    'cs': {'title': "Čeština", 'opt1': "Stáhnout MP3", 'opt2': "Stáhnout MP4", 'opt3': "Převést MKV na MP4", 'opt4': "Extrahovat MP3 z místního videa", 'opt5': "AKTUALIZOVAT SKRIPT", 'opt6': "Aktualizovat yt-dlp", 'opt7': "JAZYK", 'opt8': "Ukončit"},
+    'tr': {'title': "Türkçe", 'opt1': "MP3 İndir", 'opt2': "MP4 İndir", 'opt3': "MKV'yi MP4'e Dönüştür", 'opt4': "Yerel Videodan MP3 Ayıkla", 'opt5': "BETİĞİ GÜNCELLE", 'opt6': "yt-dlp Güncelle", 'opt7': "DİL", 'opt8': "Çıkış"},
+    'hi': {'title': "हिन्दी", 'opt1': "MP3 डाउनलोड", 'opt2': "MP4 डाउनलोड", 'opt3': "MKV को MP4 में बदलें", 'opt4': "स्थानीय वीडियो से MP3 निकालें", 'opt5': "स्क्रिप्ट अपडेट", 'opt6': "yt-dlp अपडेट", 'opt7': "भाषा", 'opt8': "बाहर निकलें"}
 }
 
-def carica_lingua():
-    if os.path.exists(CONFIG_FILE):
-        with open(CONFIG_FILE, 'r') as f:
-            saved = f.read().strip()
-            if saved in LANGS: return saved
-    return None
-
-def salva_lingua(lang_code):
-    if not os.path.exists(BASE_DIR): os.makedirs(BASE_DIR)
-    with open(CONFIG_FILE, 'w') as f: f.write(lang_code)
-
-try:
-    import yt_dlp
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "yt-dlp"])
-    import yt_dlp
-
-def installa_ffmpeg_auto(L):
+def installa_ffmpeg_auto():
     if os.path.exists(FFMPEG_EXE): return
-    print(f"\n{L['ffmpeg']}")
-    zip_tmp = os.path.join(os.environ.get('TEMP', 'C:\\'), "ffmpeg_btbn.zip")
+    print("\n>>> FFMPEG INSTALLATION IN PROGRESS...")
+    zip_tmp = os.path.join(os.environ.get('TEMP', 'C:\\'), "ffmpeg.zip")
     try:
         req = urllib.request.Request(FF_URL, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req) as response, open(zip_tmp, 'wb') as out: shutil.copyfileobj(response, out)
@@ -59,71 +41,72 @@ def installa_ffmpeg_auto(L):
         if os.path.exists(FFMPEG_ROOT): shutil.rmtree(FFMPEG_ROOT)
         shutil.move(os.path.join(temp_ex, folder), FFMPEG_ROOT)
         shutil.rmtree(temp_ex); os.remove(zip_tmp)
-    except Exception as e: print(f"Error: {e}"); input(); sys.exit()
-
-def download(url, mode, L):
-    opts = {
-        'ffmpeg_location': os.path.join(FFMPEG_ROOT, "bin"),
-        'outtmpl': os.path.join(MUSIC_DIR if mode=='audio' else VIDEO_DIR, '%(title)s.%(ext)s'),
-        'format': 'bestaudio/best' if mode=='audio' else 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
-        'noplaylist': True,
-    }
-    if mode == 'audio': opts['postprocessors'] = [{'key': 'FFmpegExtractAudio','preferredcodec': 'mp3','preferredquality': '192'}]
-    try:
-        with yt_dlp.YoutubeDL(opts) as ydl: ydl.download([url])
-        print(f"\n{L['done']}")
-    except Exception as e: print(f"Error: {e}")
+    except Exception as e: print(f"Error FFmpeg: {e}"); input(); sys.exit()
 
 def main():
-    current_code = carica_lingua()
-    if not current_code:
+    if os.path.exists(CONFIG_FILE):
+        with open(CONFIG_FILE, 'r') as f: current_code = f.read().strip()
+    else:
         os.system('cls' if os.name == 'nt' else 'clear')
-        print("===========================================")
-        print("         SELECT YOUR LANGUAGE")
-        print("===========================================")
         codes = list(LANGS.keys())
-        for i, code in enumerate(codes, 1): print(f" [{i}] {LANGS[code]['title']}")
-        idx = int(input("\nChoice: ")) - 1
-        current_code = codes[idx]
-        salva_lingua(current_code)
+        for i, c in enumerate(codes, 1): print(f" [{i}] {LANGS[c]['title']}")
+        current_code = codes[int(input("\nChoice: "))-1]
+        with open(CONFIG_FILE, 'w') as f: f.write(current_code)
 
     L = LANGS[current_code]
     for d in [BASE_DIR, MUSIC_DIR, VIDEO_DIR]: 
         if not os.path.exists(d): os.makedirs(d)
-    installa_ffmpeg_auto(L)
+    installa_ffmpeg_auto()
 
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
         print("===========================================")
-        print(L['menu'])
+        print(f"      SUPER DOWNLOADER PRO V2.2")
         print("===========================================")
         print(f" Path: {BASE_DIR} | Lang: {L['title']}")
         print("-------------------------------------------")
-        for i in range(1, 8): print(f" {L[f'opt{i}']}")
+        for i in range(1, 9): print(f" [{i}] -> {L[f'opt{i}']}")
         print("===========================================")
         
-        scelta = input(L['ask']).strip()
-        if scelta == '7': break
-        elif scelta == '6':
+        scelta = input("Choice: ").strip()
+        if scelta == '8': break
+        elif scelta == '7':
             if os.path.exists(CONFIG_FILE): os.remove(CONFIG_FILE)
             main(); break
         elif scelta in ['1', '2']:
-            u = input(L['link']).strip()
-            if u.lower() != 'x' and u: download(u, 'audio' if scelta == '1' else 'video', L)
+            u = input("Link (x back): ").strip()
+            if u.lower() != 'x':
+                import yt_dlp
+                opts = {'ffmpeg_location': os.path.join(FFMPEG_ROOT, "bin"), 'outtmpl': os.path.join(MUSIC_DIR if scelta=='1' else VIDEO_DIR, '%(title)s.%(ext)s'), 'noplaylist': True}
+                if scelta == '1': opts.update({'format': 'bestaudio/best', 'postprocessors': [{'key': 'FFmpegExtractAudio','preferredcodec': 'mp3','preferredquality': '192'}]})
+                else: opts.update({'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'})
+                try:
+                    with yt_dlp.YoutubeDL(opts) as ydl: ydl.download([u])
+                    print("\n✅ DONE")
+                except Exception as e: print(f"Error: {e}")
             input("\nENTER...")
-        elif scelta == '3':
+        elif scelta == '3': # MKV -> MP4
+            files = [f for f in os.listdir(VIDEO_DIR) if f.lower().endswith('.mkv')]
+            for f in files:
+                print(f"🔄 Converting: {f}")
+                subprocess.run([FFMPEG_EXE, "-i", os.path.join(VIDEO_DIR, f), "-c", "copy", os.path.join(VIDEO_DIR, os.path.splitext(f)[0] + ".mp4"), "-y"], capture_output=True)
+            print("✅ DONE"); input("\nENTER...")
+        elif scelta == '4': # Video -> MP3
             files = [f for f in os.listdir(VIDEO_DIR) if f.lower().endswith(('.mp4', '.mkv', '.webm'))]
             for f in files:
-                out = os.path.splitext(f)[0] + ".mp3"
-                subprocess.run([FFMPEG_EXE, "-i", os.path.join(VIDEO_DIR, f), "-vn", "-b:a", "192k", os.path.join(MUSIC_DIR, out), "-y"], capture_output=True)
-            print(L['done']); input("\nENTER...")
-        elif scelta == '4':
-            urllib.request.urlretrieve(UPDATE_URL, SCRIPT_PATH + ".new")
-            with open("update.bat", "w") as f: f.write(f'@echo off\ntimeout /t 1 >nul\nmove /y "{SCRIPT_PATH}.new" "{SCRIPT_PATH}"\nstart python "{SCRIPT_PATH}"\ndel "%~f0"')
-            subprocess.Popen("update.bat", shell=True); sys.exit()
+                print(f"🎵 Extracting MP3: {f}")
+                subprocess.run([FFMPEG_EXE, "-i", os.path.join(VIDEO_DIR, f), "-vn", "-b:a", "192k", os.path.join(MUSIC_DIR, os.path.splitext(f)[0] + ".mp3"), "-y"], capture_output=True)
+            print("✅ DONE"); input("\nENTER...")
         elif scelta == '5':
+            print("Checking updates...")
+            try:
+                urllib.request.urlretrieve(UPDATE_URL, SCRIPT_PATH + ".new")
+                with open("update.bat", "w") as f: f.write(f'@echo off\ntimeout /t 1 >nul\nmove /y "{SCRIPT_PATH}.new" "{SCRIPT_PATH}"\nstart python "{SCRIPT_PATH}"\ndel "%~f0"')
+                subprocess.Popen("update.bat", shell=True); sys.exit()
+            except: print("Error: Server Offline"); input()
+        elif scelta == '6':
             subprocess.check_call([sys.executable, "-m", "pip", "install", "-U", "yt-dlp"])
-            input("\nENTER...")
+            input("\nUPDATED. ENTER...")
 
 if __name__ == "__main__":
     main()
