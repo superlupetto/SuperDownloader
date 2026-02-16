@@ -1,59 +1,36 @@
-# 🚀 Super Downloader Pro V1.9.2
+🚀 Super Downloader PRO V2.2
+Uno strumento avanzato basato su Python, yt-dlp e FFmpeg per scaricare e convertire contenuti multimediali alla massima qualità possibile. Sostituisce i vecchi script .bat offrendo una gestione multilingua e un'installazione completamente automatizzata dei componenti necessari.
+✨ Caratteristiche Principali
+🎵 Scarica MP3: Estrazione audio automatica a 192kbps da qualsiasi link.
+🎬 Scarica MP4: Download video in alta risoluzione (FHD, 2K, 4K) con merge intelligente.
+🔄 Converti MKV in MP4: Cambio contenitore ultra-rapido (senza perdita di qualità) tramite stream copy.
+📻 Estrai MP3 da Video Locali: Converte i tuoi file video già presenti sul PC in tracce audio.
+🌍 Sistema Multilingua: Supporto integrato per 9 lingue (IT, EN, JA, DA, FR, HR, CS, TR, HI).
+🛠️ Auto-Setup: Scarica e configura automaticamente BtbN FFmpeg se mancante.
+📡 Update Server: Funzione integrata per aggiornare lo script direttamente dal server remoto.
+📂 Struttura delle Cartelle
+Lo script organizza i file in percorsi fissi per una gestione pulita:
+C:\Super Downloader\Musica -> Dove vengono salvati i file .mp3.
+C:\Super Downloader\Video -> Dove vengono salvati i file .mp4 e .mkv.
+C:\FFmpeg\bin -> Sede dei binari di sistema per le conversioni.
+🛠️ Requisiti di Sistema
+Python 3.10+: Scaricabile dal Microsoft Store o dal sito ufficiale.
+yt-dlp: Gestito automaticamente dallo script (o installabile via pip install yt-dlp).
+Connessione Internet: Necessaria per i download e gli aggiornamenti.
+🚀 Come Iniziare
+Salva il codice nel file SuperDownloader.py.
+Apri il terminale (CMD o PowerShell) ed esegui:
+bash
+python SuperDownloader.py
+Usa il codice con cautela.
 
-Un potente strumento basato su **Python** e **yt-dlp** per il download e la conversione di contenuti multimediali. Progettato per essere semplice, multilingue e completamente automatizzato.
-
----
-
-## ✨ Caratteristiche Principali
-
-*   🎵 **Download MP3**: Estrazione audio di alta qualità (192kbps).
-*   🎬 **Download MP4**: Video in alta risoluzione (fino a 4K) con merge automatico.
-*   🔄 **Conversione Locale**: Trasforma i tuoi video salvati in MP3 con un clic.
-*   🌍 **Multilingua**: Supporto integrato per:
-    *   Italiano, English, 日本語 (Giapponese), Dansk, Français, Hrvatski, Čeština, Türkçe, हिन्दी (Hindi).
-*   🛠️ **Auto-Setup**: 
-    *   Configurazione automatica delle cartelle in `C:\Super Downloader`.
-    *   Installazione automatica di **FFmpeg** (BtbN Builds) se mancante.
-*   📡 **Aggiornamenti**: Sistema di auto-update per lo script e la libreria `yt-dlp`.
-
----
-
-## 📂 Struttura del Sistema
-
-Lo script organizza i file in percorsi predefiniti per la massima pulizia:
-
-*   **Musica**: `C:\Super Downloader\Musica`
-*   **Video**: `C:\Super Downloader\Video`
-*   **Configurazione**: `C:\Super Downloader\config.txt` (Salva la tua lingua)
-*   **Motore Core**: `C:\FFmpeg\bin`
-
----
-
-## 🚀 Requisiti e Installazione
-
-1.  **Python 3.10+**: Scaricabile dal [Sito Ufficiale Python](https://www.python.org) o dal Microsoft Store.
-2.  **yt-dlp**: Viene installato automaticamente al primo avvio.
-3.  **FFmpeg**: Viene scaricato e configurato automaticamente dallo script.
-
-### Come avviarlo:
-1.  Salva il codice come `SuperDownloader.py`.
-2.  Apri il terminale nella cartella del file.
-3.  Esegui il comando:
-    ```bash
-    python SuperDownloader.py
-    ```
-
----
-
-## ⚙️ Menu Opzioni
-
-1.  **Scarica MP3**: Incolla il link di YouTube per ottenere l'audio.
-2.  **Scarica MP4**: Incolla il link per ottenere il video completo.
-3.  **Converti Locali**: Converte tutti i file in `...\Video` in MP3 salvandoli in `...\Musica`.
-4.  **Aggiorna Script**: Scarica l'ultima versione dal server.
-5.  **Aggiorna yt-dlp**: Aggiorna il motore di download per superare i blocchi di YouTube.
-6.  **Lingua**: Resetta la scelta della lingua.
-7.  **Esci**: Chiude il programma.
+Scegli la tua lingua al primo avvio (verrà salvata in config.txt).
+Incolla l'URL e goditi il download!
+🛡️ Supporto e Community
+Se riscontri bug o hai bisogno di assistenza tecnica:
+Discord Ufficiale: Discord.gg/vQACqKnysB
+Supporto Diretto: Scrivi nel canale #supporto sul nostro server Discord.
+Update: Controlla regolarmente l'opzione [4] per le ultime patch di sicurezza.
 
 ---
 
