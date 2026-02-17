@@ -6,13 +6,13 @@ import zipfile
 import shutil
 
 # --- CONFIGURAZIONE ---
-BASE_DIR = r"C:\Super Downloader"
+BASE_DIR = r"C:\FreeSuperDownloader"
 CONFIG_FILE = os.path.join(BASE_DIR, "config.txt")
 MUSIC_DIR = os.path.join(BASE_DIR, "Musica")
 VIDEO_DIR = os.path.join(BASE_DIR, "Video")
 FFMPEG_ROOT = r"C:\FFmpeg"
 FFMPEG_EXE = os.path.join(FFMPEG_ROOT, "bin", "ffmpeg.exe")
-UPDATE_URL = "http://lunaremagicafata.duckdns.org/downloads/SuperDownloader.py"
+UPDATE_URL = "http://lunaremagicafata.duckdns.org/downloads/FreeSuperDownloader.py"
 FF_URL = "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip"
 SCRIPT_PATH = os.path.abspath(__file__)
 
@@ -56,8 +56,11 @@ def main():
         os.system('cls' if os.name == 'nt' else 'clear')
         codes = list(LANGS.keys())
         for i, c in enumerate(codes, 1): print(f" [{i}] {LANGS[c]['title']}")
-        curr = codes[int(input("Choice: "))-1]
-        with open(CONFIG_FILE, 'w') as f: f.write(curr)
+        try:
+            choice = int(input("> "))
+            curr = codes[choice-1]
+            with open(CONFIG_FILE, 'w') as f: f.write(curr)
+        except: curr = 'it'
 
     L = LANGS[curr]
     for d in [BASE_DIR, MUSIC_DIR, VIDEO_DIR]: 
@@ -67,7 +70,7 @@ def main():
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
         print("===========================================")
-        print(f"      SUPER DOWNLOADER PRO V2.6")
+        print(f"     Free SUPER DOWNLOADER PRO V2.8")
         print("===========================================")
         for i in range(1, 9): print(f" [{i}] -> {L[f'opt{i}']}")
         print("===========================================")
@@ -84,20 +87,34 @@ def main():
                 u = input(L['loop_prompt']).strip()
                 if u.lower() == 'x': break
                 if u:
-                    opts = {'ffmpeg_location': os.path.join(FFMPEG_ROOT, "bin"), 'outtmpl': os.path.join(MUSIC_DIR if s=='1' else VIDEO_DIR, '%(title)s.%(ext)s'), 'noplaylist': True}
-                    if s == '1': opts.update({'format': 'bestaudio/best', 'postprocessors': [{'key': 'FFmpegExtractAudio','preferredcodec': 'mp3','preferredquality': '192'}]})
-                    else: opts.update({'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'})
-                    with yt_dlp.YoutubeDL(opts) as ydl: ydl.download([u])
+                    opts = {
+                        'ffmpeg_location': os.path.join(FFMPEG_ROOT, "bin"),
+                        'outtmpl': os.path.join(MUSIC_DIR if s=='1' else VIDEO_DIR, '%(title)s.%(ext)s'),
+                        'noplaylist': True,
+                    }
+                    if s == '1':
+                        opts.update({'format': 'bestaudio/best', 'postprocessors': [{'key': 'FFmpegExtractAudio','preferredcodec': 'mp3','preferredquality': '192'}]})
+                    else:
+                        opts.update({'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'})
+                    try:
+                        with yt_dlp.YoutubeDL(opts) as ydl: ydl.download([u])
+                    except: pass
         elif s == '3':
-            for f in [f for f in os.listdir(VIDEO_DIR) if f.lower().endswith('.mkv')]:
-                subprocess.run([FFMPEG_EXE, "-i", os.path.join(VIDEO_DIR, f), "-c", "copy", os.path.join(VIDEO_DIR, os.path.splitext(f)[0] + ".mp4"), "-y"], capture_output=True)
+            for f in os.listdir(VIDEO_DIR):
+                if f.lower().endswith('.mkv'):
+                    n = os.path.splitext(f)[0]
+                    subprocess.run([FFMPEG_EXE, "-i", os.path.join(VIDEO_DIR, f), "-c", "copy", os.path.join(VIDEO_DIR, f"{n}.mp4"), "-y"], capture_output=True)
         elif s == '4':
-            for f in [f for f in os.listdir(VIDEO_DIR) if f.lower().endswith(('.mp4', '.mkv'))]:
-                subprocess.run([FFMPEG_EXE, "-i", os.path.join(VIDEO_DIR, f), "-vn", "-b:a", "192k", os.path.join(MUSIC_DIR, os.path.splitext(f)[0] + ".mp3"), "-y"], capture_output=True)
+            for f in os.listdir(VIDEO_DIR):
+                if f.lower().endswith(('.mp4', '.mkv')):
+                    n = os.path.splitext(f)[0]
+                    subprocess.run([FFMPEG_EXE, "-i", os.path.join(VIDEO_DIR, f), "-vn", "-b:a", "192k", os.path.join(MUSIC_DIR, f"{n}.mp3"), "-y"], capture_output=True)
         elif s == '5':
-            urllib.request.urlretrieve(UPDATE_URL, SCRIPT_PATH + ".new")
-            with open("update.bat", "w") as f: f.write(f'@echo off\nmove /y "{SCRIPT_PATH}.new" "{SCRIPT_PATH}"\nstart python "{SCRIPT_PATH}"\ndel "%~f0"')
-            subprocess.Popen("update.bat", shell=True); sys.exit()
+            try:
+                urllib.request.urlretrieve(UPDATE_URL, SCRIPT_PATH + ".new")
+                with open("update.bat", "w") as f: f.write(f'@echo off\ntimeout /t 1 >nul\nmove /y "{SCRIPT_PATH}.new" "{SCRIPT_PATH}"\nstart python "{SCRIPT_PATH}"\ndel "%~f0"')
+                subprocess.Popen("update.bat", shell=True); sys.exit()
+            except: pass
         elif s == '6':
             subprocess.check_call([sys.executable, "-m", "pip", "install", "-U", "yt-dlp"])
 
