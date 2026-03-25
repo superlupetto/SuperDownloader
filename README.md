@@ -22,3 +22,4 @@ Un potente downloader da terminale in Python per scaricare audio e video da inte
 ## 📁 Struttura cartelle
 
 Il programma crea automaticamente:
+C://FreeSuperDownloader
