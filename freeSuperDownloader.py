@@ -94,7 +94,7 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def pausa(L):
-    input(L['msg_press_enter'])
+    pass
 
 def mostra_info(L, msg):
     print(f"\n{L['msg_info']} {msg}")
