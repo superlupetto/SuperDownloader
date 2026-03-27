@@ -9,14 +9,13 @@ import traceback
 from logging.handlers import RotatingFileHandler
 
 # --- CONFIGURAZIONE ---
-USER_HOME = os.path.expanduser("~/Documenti")
+USER_HOME = os.path.join(os.path.expanduser("~"), "Documents")
 BASE_DIR = os.path.join(USER_HOME, "FreeSuperDownloader")
 CONFIG_FILE = os.path.join(BASE_DIR, "config.txt")
 MUSIC_DIR = os.path.join(BASE_DIR, "Musica")
 VIDEO_DIR = os.path.join(BASE_DIR, "Video")
 FFMPEG_ROOT = os.path.join(BASE_DIR, "FFmpeg")
 FFMPEG_EXE = os.path.join(FFMPEG_ROOT, "bin", "ffmpeg.exe")
-
 
 UPDATE_URL = "https://raw.githubusercontent.com/superlupetto/FreeSuperDownloader/main/freeSuperDownloader.py"
 FF_URL = "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip"
@@ -28,7 +27,7 @@ LANGS = {
         'title': "Italiano",
         'opt1': "Scarica Modalità mp4-mp3",
         'opt2': "Converti MKV in MP4",
-        'opt3': "Estrai Video da mp3 Locali",
+        'opt3': "Estrai MP3 da Video Locali",
         'opt4': "AGGIORNA SCRIPT",
         'opt5': "Aggiorna yt-dlp",
         'opt6': "LINGUA",
@@ -61,7 +60,7 @@ LANGS = {
     'en': {
         'title': "English",
         'opt1': "Download (Loop Mode)", 'opt2': "Convert MKV to MP4",
-        'opt3': "Extract MP3", 'opt4': "UPDATE SCRIPT", 'opt5': "Update yt-dlp",
+        'opt3': "Extract MP3 from Video", 'opt4': "UPDATE SCRIPT", 'opt5': "Update yt-dlp",
         'opt6': "LANGUAGE", 'opt7': "Exit",
         'loop_head': "--- DOWNLOAD MODE (X to exit | Type 'mp3' or 'mp4' to switch) ---",
         'loop_mode': "Current mode: {mode}",
@@ -95,7 +94,7 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def pausa(L):
-    pass
+    input(L['msg_press_enter'])
 
 def mostra_info(L, msg):
     print(f"\n{L['msg_info']} {msg}")
@@ -184,6 +183,11 @@ def scegli_lingua():
 
 def converti_mkv_a_mp4(L):
     convertiti, errori, trovati = 0, 0, False
+    if not os.path.exists(VIDEO_DIR):
+        mostra_info(L, L['msg_no_files'])
+        pausa(L)
+        return
+
     for f in os.listdir(VIDEO_DIR):
         if f.lower().endswith('.mkv'):
             trovati = True
@@ -204,6 +208,11 @@ def converti_mkv_a_mp4(L):
 
 def estrai_mp3(L):
     estratti, errori, trovati = 0, 0, False
+    if not os.path.exists(VIDEO_DIR):
+        mostra_info(L, L['msg_no_files'])
+        pausa(L)
+        return
+
     for f in os.listdir(VIDEO_DIR):
         if f.lower().endswith(('.mp4', '.mkv')):
             trovati = True
@@ -248,7 +257,6 @@ def aggiorna_ytdlp(L):
     pausa(L)
 
 def download_loop(L):
-    # Modalità predefinita: MP4 (H.264/AAC)
     mode = "mp3"
     
     while True:
@@ -261,7 +269,6 @@ def download_loop(L):
         if u.lower() == 'x':
             break
         
-        # Comandi speciali per cambiare modalità
         if u.lower() == 'mp3':
             mode = 'mp3'
             print(f"\n{L['msg_mode_change'].format(mode='MP3')}")
@@ -276,7 +283,6 @@ def download_loop(L):
         if not u:
             continue
 
-        # Configurazione base
         opts = {
             'ffmpeg_location': os.path.join(FFMPEG_ROOT, "bin"),
             'outtmpl': os.path.join(MUSIC_DIR if mode == 'mp3' else VIDEO_DIR, '%(title)s.%(ext)s'),
@@ -293,7 +299,7 @@ def download_loop(L):
                     'preferredquality': '192'
                 }]
             })
-        else: # MP4
+        else:
             opts.update({
                 'format': 'bestvideo[vcodec^=avc1][ext=mp4]+bestaudio[acodec^=mp4a][ext=m4a]/bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
                 'merge_output_format': 'mp4',
@@ -334,14 +340,14 @@ def main():
 
     while True:
         clear_screen()
-        print("===================================================")
-        print("           SUPER DOWNLOADER PRO V3.0")
-        print("===================================================")
-        print(os.path.expandvars(r"  %USERPROFILE%\Documents\FreeSuperDownloader"))
-        print("===================================================")
+        print("=====================================================")
+        print("             SUPER DOWNLOADER PRO V3.6")
+        print("=====================================================")
+        print(f"   CARTELLA: {BASE_DIR}")
+        print("=====================================================")
         for i in range(1, 8):
             print(f" [{i}] -> {L.get(f'opt{i}', '?')}")
-        print("===================================================")
+        print("=====================================================")
 
         s = input("> ").strip()
 
